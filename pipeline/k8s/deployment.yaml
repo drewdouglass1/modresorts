@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: modresorts10war
+  name: modresorts10war
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: modresorts10war
+  template:
+    metadata:
+      labels:
+        app: modresorts10war
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/myproject/modresorts10war:latest
+          imagePullPolicy: Always
+          name: modresorts10war
+          ports:
+            - containerPort: 9080
+              protocol: TCP
